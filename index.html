@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetroPulse - Suivi en temps réel du métro de Paris</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Styles personnalisés -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- En-tête Apple style -->
+    <header class="header">
+        <div class="header-content">
+            <h1 class="header-title">MetroPulse</h1>
+            <p class="header-subtitle">Métro de Paris</p>
+        </div>
+        <div class="header-controls">
+            <button class="btn-settings" id="toggleSettings">⚙️</button>
+        </div>
+    </header>
+
+    <!-- Conteneur principal -->
+    <main class="container">
+        <!-- Carte -->
+        <div class="map-container">
+            <div id="map" class="map"></div>
+            <div class="map-overlay">
+                <div class="time-display" id="timeDisplay">00:00</div>
+            </div>
+        </div>
+
+        <!-- Panneau latéral - Infos trains -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Trains en circulation</h2>
+                <span class="badge" id="trainCount">0</span>
+            </div>
+            <div class="trains-list" id="trainsList">
+                <!-- Rempli dynamiquement -->
+            </div>
+        </aside>
+    </main>
+
+    <!-- Panneau de contrôle (caché par défaut) -->
+    <div class="settings-panel" id="settingsPanel">
+        <div class="settings-content">
+            <h3>Paramètres</h3>
+            
+            <div class="setting-group">
+                <label>
+                    <input type="checkbox" id="toggleTraffic" checked>
+                    Afficher état du trafic
+                </label>
+            </div>
+
+            <div class="setting-group">
+                <label>Lignes à afficher</label>
+                <div id="linesCheckboxes" class="lines-grid">
+                    <!-- Rempli dynamiquement -->
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <label>Vitesse d'animation</label>
+                <input type="range" id="speedSlider" min="1" max="10" value="1" class="slider">
+                <span id="speedValue">1x</span>
+            </div>
+
+            <div class="setting-group">
+                <button class="btn-close" id="closeSettings">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="data/metro-lines.js"></script>
+    <script src="utils.js"></script>
+    <script src="train-tracker.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
